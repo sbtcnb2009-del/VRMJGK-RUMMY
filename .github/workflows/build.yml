@@ -46,8 +46,10 @@ jobs:
       run: |
         buildozer init || true
         sed -i 's/#requirements = python3,kivy/requirements = python3/' buildozer.spec
-        sed -i 's/# android.api = 31/android.api = 33/' buildozer.spec
-        sed -i 's/# android.minapi = 21/android.minapi = 21/' buildozer.spec
+        sed -i 's/android.api =.*/android.api = 33/' buildozer.spec
+        sed -i 's/android.minapi =.*/android.minapi = 21/' buildozer.spec
+        sed -i 's/#android.api =.*/android.api = 33/' buildozer.spec
+        sed -i 's/#android.minapi =.*/android.minapi = 21/' buildozer.spec
         buildozer -v android debug
 
     - name: Upload APK
